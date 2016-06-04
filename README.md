@@ -1,7 +1,8 @@
-# noir-maker
+# Noir-maker
 An image filter that generates a noir comic style image from input.
 
 ---
+# Controls
 
 'W' to enable MouseX and MouseY to map to intensity of white and black respectively.
 
@@ -22,5 +23,5 @@ A photograph of The Pillars of Creation:
 The photograph run through the program on three different settings:
 
 ![](https://github.com/herringblue/noir-maker/blob/master/example-1/541.png)
-![](https://github.com/herringblue/noir-maker/blob/master/example-1/664.png)
 ![](https://github.com/herringblue/noir-maker/blob/master/example-1/739.png)
+![](https://github.com/herringblue/noir-maker/blob/master/example-1/664.png)
