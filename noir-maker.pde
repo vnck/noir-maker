@@ -69,10 +69,9 @@ void draw() {
   for (int x = 0; x < source.width; x++) {
     for (int y = 0; y < source.height; y++) {
       int loc = x + y*source.width;
-      // whiteness ( more = more white )
+      
       if (brightness(source.pixels[loc]) > w) {
         destination.pixels[loc] = color(255);
-        // greyness
       } else if (brightness(source.pixels[loc]) < b) {
         destination.pixels[loc] = color(0);
       } else {
@@ -104,13 +103,14 @@ void save() {
 
 void lineGen(float inter) {
   lines = createGraphics(source.width, source.height);
+  float dist = source.width*1.5;
   lines.beginDraw();
   lines.background(255);
   lines.stroke(1);
   lines.fill(0);
-  for (int i = 0; i < source.width; i+= inter) {
-    lines.line((i), 0, source.width, source.height -(i));
-    lines.line(0, (i+inter), source.width-(i+inter), source.height);
+  for (int i = 0; i < dist; i+= inter) {
+    lines.line((i), 0, dist, dist-i);
+    lines.line(0, i+inter, dist-i, dist+inter);
   }
   lines.endDraw();
 }
@@ -124,7 +124,7 @@ void keyPressed() {
     b = map(mouseY, 10, height-10, 0, 255);
   } else if ( key == 'd' || key == 'D') {
     loop();
-    inter = map(mouseX, 10, width-10, 10, 2);
+    inter = map(mouseX, 10, width-10, 30, 2);
     lineGen(inter);
     imgLines = lines.get();
   } else if ( key == 's' || key == 'S') {
