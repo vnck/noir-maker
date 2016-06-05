@@ -40,12 +40,12 @@ The photograph run through the program on three different settings:
 
 _Without outlines_
 
-![](https://github.com/herringblue/noir-maker/blob/edgy-noir-maker/example-2/349.png)
+![](https://github.com/herringblue/noir-maker/blob/master/example-2/349.png)
 
 _With outlines_
 
-![](https://github.com/herringblue/noir-maker/blob/edgy-noir-maker/example-2/1732.png)
+![](https://github.com/herringblue/noir-maker/blob/master/example-2/1732.png)
 
 _With outline and minimal shading_
 
-![](https://github.com/herringblue/noir-maker/blob/edgy-noir-maker/example-2/1291.png)
+![](https://github.com/herringblue/noir-maker/blob/master/example-2/1291.png)
