@@ -18,16 +18,7 @@ void setup() {
   source = loadImage(path);
   destination = createImage(source.width, source.height, RGB);
 
-  lines = createGraphics(source.width, source.height);
-  lines.beginDraw();
-  lines.background(255);
-  lines.stroke(1);
-  lines.fill(0);
-  for (int i = 0; i < source.width; i+= inter) {
-    lines.line((i), 0, source.width, source.height -(i));
-    lines.line(0, (i+inter), source.width-(i+inter), source.height);
-  }
-  lines.endDraw();
+  lineGen(inter);
   imgLines = lines.get();
 }
 
