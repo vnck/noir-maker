@@ -1,13 +1,19 @@
+import gab.opencv.*;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+
+OpenCV opencv;
+
 String path;
-PImage source;
-PImage destination;
+PImage source, destination, imgLines, canny;
 PGraphics lines;
-PImage imgLines;
 
 float w = 150; //larger value = less colour
 float b = 100; //larger value = more colour
 float s;
 float inter = 8;
+int m = 125;
+int n = 75;
 
 void setup() {
   size(640, 640);
@@ -20,6 +26,8 @@ void setup() {
 
   lineGen(inter);
   imgLines = lines.get();
+
+  edgeGen(m, n);
 }
 
 
@@ -53,17 +61,17 @@ void draw() {
   };
 
   if (source != null) {
-    source.loadPixels();
+    canny.loadPixels();
   }
   imgLines.loadPixels();
   destination.loadPixels();
   for (int x = 0; x < source.width; x++) {
     for (int y = 0; y < source.height; y++) {
       int loc = x + y*source.width;
-      
-      if (brightness(source.pixels[loc]) > w) {
+
+      if (brightness(canny.pixels[loc]) > w) {
         destination.pixels[loc] = color(255);
-      } else if (brightness(source.pixels[loc]) < b) {
+      } else if (brightness(canny.pixels[loc]) < b) {
         destination.pixels[loc] = color(0);
       } else {
         destination.pixels[loc] = imgLines.pixels[loc];
@@ -79,7 +87,7 @@ void draw() {
   scale(s);
   image(destination, 0, 0);
   fill(255);
-  
+
   popMatrix();
 }
 
@@ -106,7 +114,15 @@ void lineGen(float inter) {
   lines.endDraw();
 }
 
-
+void edgeGen(int m, int n) {
+  opencv = new OpenCV(this, source);
+  opencv.findCannyEdges(m, n);
+  opencv.invert();
+  Mat edges = opencv.getGray().clone();
+  opencv.loadImage(source);
+  Core.min(edges, opencv.getGray(), opencv.getGray());
+  canny = opencv.getSnapshot();
+}
 
 void keyPressed() {
   if (key == 'w' || key == 'W') {
@@ -118,6 +134,11 @@ void keyPressed() {
     inter = map(mouseX, 10, width-10, 30, 2);
     lineGen(inter);
     imgLines = lines.get();
+  } else if ( key == 'e' || key == 'E') {
+    loop();
+    m = int(map(mouseX, 10, width-10, 0, 300));
+    n = int(map(mouseY, 10, height-10, 300, 0));
+    edgeGen(m, n);
   } else if ( key == 's' || key == 'S') {
     save();
   } else if ( key == 'q' || key == 'Q') {
