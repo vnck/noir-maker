@@ -8,6 +8,8 @@ An image filter that generates a noir comic style image from input.
 
 'D' to enable MouseX to map to intensity of shading lines.
 
+'E' to enable MouseX and MouseY to map to intensity of outline.
+
 'S' to save image
 
 'Q' to Quit
