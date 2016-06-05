@@ -34,7 +34,7 @@ The photograph run through the program on three different settings:
 
 A photograph of Ham the Champ:
 
-![](https://github.com/herringblue/noir-maker/blob/edgy-noir-maker/example-2/410.jpg)
+![](https://github.com/herringblue/noir-maker/blob/master/example-2/410.jpg)
 
 The photograph run through the program on three different settings:
 
